@@ -1,0 +1,1 @@
+domaci.o: domaci.c
