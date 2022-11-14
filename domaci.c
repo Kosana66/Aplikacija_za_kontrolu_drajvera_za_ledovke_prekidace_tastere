@@ -6,7 +6,7 @@
 int main ()
 {
 	FILE *fp;
-	unsigned int br1, br2;
+	unsigned int br1, br2, res;
 	char *str;
 	char lval1,lval2,lval3,lval4;
 	char tval1,tval2,tval3,tval4;
@@ -15,7 +15,12 @@ int main ()
 
 	while(1)
 	
-		{//Citanje vrednosti dioda
+		{
+
+		printf("---------------------------------------\n");
+
+
+		//Citanje vrednosti dioda
 		fp = fopen ("/dev/led", "r");
 		if(fp==NULL)
 		{
@@ -37,6 +42,9 @@ int main ()
 		lval3 = str[4] - 48;
 		lval4 = str[5] - 48;
 		free(str);
+
+		printf("Vrednosti ledovke su: %d %d %d %d \n", lval1, lval2, lval3, lval4);
+	
 
 		//Citanje vrednosti tastera
 		fp = fopen ("/dev/button", "r");
@@ -61,6 +69,9 @@ int main ()
 		tval4 = str[5] - 48;
 		free(str);
 		
+		printf("Vrednosti tastera su: %d %d %d %d \n", tval1, tval2, tval3, tval4);
+		
+
 		//Citanje vrednosti prekidaca
 		fp = fopen ("/dev/switch", "r");
 		if(fp==NULL)
@@ -83,6 +94,12 @@ int main ()
 		sval3 = str[4] - 48;
 		sval4 = str[5] - 48;
 		free(str);
+
+		printf("Vrednosti prekidaca su: %d %d %d %d \n", sval1, sval2, sval3, sval4);
+	
+
+		printf("---------------------------------------\n");
+
 
 		if(lval1==0 && lval2==0 && lval3==0 && lval4==0 )
 			br1=0;
@@ -117,6 +134,8 @@ int main ()
 		else if(lval1==1 && lval2==1 && lval3==1 && lval4==1 )
 			br1=15;
 
+		printf(" broj 1 je :  %d  \n", br1);
+
 		if(sval1==0 && sval2==0 )
 			br2=0;
 		else if(sval1==0 && sval2==1 )
@@ -125,15 +144,27 @@ int main ()
 			br2=2;
 		else if(sval1==1 && sval2==1 )
 			br2=3;
-			
+
+		printf(" broj 2 je :  %d  \n", br2);
+
+
 		if(sval3==0 && sval4==0 )
-			br1 = br1 + br2;
+			res = br1 + br2;
 		else if(sval3==0 && sval4==1 )
-			br1 = br1 - br2;
+			res = br1 - br2;
 		else if(sval3==1 && sval4==0 )
-			br1 = br1 * br2;
+			res = br1 * br2;
 		else if(sval3==1 && sval4==1 )
-			br1 = br1 / br2;
+			res = br1 / br2;
+
+		printf(" resenje je :  %d  \n", res);
+
+		if(tval4 == 1)
+			br1=res;
+
+		sleep(1);
+
+
 
 		fp = fopen ("/dev/led", "w");
 		if(fp==NULL)
@@ -180,5 +211,6 @@ int main ()
 			puts("Problem pri zatvaranju /dev/led tokom upisa\n");
 			return -1;
 		}
+
 	}
 }
