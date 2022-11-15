@@ -18,6 +18,39 @@ int main ()
 	
 		{
 
+		
+
+                //Citanje vrednosti tastera
+		fp = fopen ("/dev/button", "r");
+		if(fp==NULL)
+		{
+			puts("Problem pri otvaranju /dev/button\n");
+			return -1;
+		}
+
+		str = (char *)malloc(num_of_bytes+1); 
+		getline(&str, &num_of_bytes, fp); 
+
+		if(fclose(fp))
+		{
+			puts("Problem pri zatvaranju /dev/button\n");
+			return -1;
+		}
+
+		tval4 = str[5] - 48;
+		free(str);
+		
+		printf("Vrednosti tastera 0 je: %d \n", tval4);
+		
+
+                novo=0;
+		if(tval4)
+			novo=1;
+                if( novo!=0 && novo!=staro ) 
+                {
+                      	
+		
+			
 		printf("---------------------------------------\n");
 
 
@@ -129,37 +162,10 @@ int main ()
 			res = br1 / br2;
 
 		printf(" resenje je :  %d  \n", res);
-
-
-                //Citanje vrednosti tastera
-		fp = fopen ("/dev/button", "r");
-		if(fp==NULL)
-		{
-			puts("Problem pri otvaranju /dev/button\n");
-			return -1;
-		}
-
-		str = (char *)malloc(num_of_bytes+1); 
-		getline(&str, &num_of_bytes, fp); 
-
-		if(fclose(fp))
-		{
-			puts("Problem pri zatvaranju /dev/button\n");
-			return -1;
-		}
-
-		tval4 = str[5] - 48;
-		free(str);
-		
-		printf("Vrednosti tastera 0 je: %d \n", tval4);
-		
-
-                novo=0;
-		if(tval4)
-			novo=1;
-                if( novo!=0 && novo!=staro ) 
-                {
-                         
+	
+			
+			
+			
 
 		fp = fopen ("/dev/led", "w");
 		if(fp==NULL)
