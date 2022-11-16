@@ -39,7 +39,7 @@ int main () {
 		if( novo!=0 && novo!=staro )
         {
 
-                        		printf("Vrednosti tastera 0 je: %d \n", tval4);
+                        	
  
 					printf("---------------------------------------\n");
 					//Citanje vrednosti dioda
@@ -128,53 +128,54 @@ int main () {
 						br2=3;
 					printf(" broj 2 je : %d \n", br2);
 					if(sval3==0 && sval4==0 )
-						res = br1 + br2;
+						br1 = br1 + br2;
 					else if(sval3==0 && sval4==1 )
-						res = br1 - br2;
+						br1 = br1 - br2;
 					else if(sval3==1 && sval4==0 )
-						res = br1 * br2;
+						br1 = br1 * br2;
 					else if(sval3==1 && sval4==1 )
-						res = br1 / br2;
-					printf(" resenje je : %d \n", res);
+						br1 = br1 / br2;
+					printf(" resenje je : %d \n", br1);
 					fp = fopen ("/dev/led", "w");
 					if(fp==NULL)
 					{
 						puts("Problem pri otvaranju /dev/led tokom upisa\n ");
 						return -1;
-					}	
+					}
+						
 
 					if(br1==0)
-						fputs("0x00\n", fp);
-					else if(br1==1)
-						fputs("0x01\n", fp);
-					else if(br1==2)
-						fputs("0x02\n", fp);
-					else if(br1==3)
-						fputs("0b0011\n", fp);
-					else if(br1==4)
-						fputs("0x04\n", fp);
-					else if(br1==5)
-						fputs("0x05\n", fp);
-					else if(br1==6)
-						fputs("0x06\n", fp);
-					else if(br1==7)
-						fputs("0x07\n", fp);
-					else if(br1==8)
-						fputs("0x08\n", fp);
-					else if(br1==9)
-						fputs("0x09\n", fp);
-					else if(br1==10)
-						fputs("0x0A\n", fp);
-					else if(br1==11)
-						fputs("0x0B\n", fp);
-					else if(br1==12)
-						fputs("0x0C\n", fp);
-					else if(br1==13)
-						fputs("0x0D\n", fp);
-					else if(br1==14)
-						fputs("0x0E\n", fp);
-					else if(br1==15)
-						fputs("0x0F\n", fp);
+						fputs("0x00", fp);
+					if(br1==1)
+						fputs("0x01", fp);
+					if(br1==2)
+						fputs("0x02", fp);
+					if(br1==3)
+						fputs("0b03", fp);
+					if(br1==4)
+						fputs("0x04", fp);
+					if(br1==5)
+						fputs("0x05", fp);
+					if(br1==6)
+						fputs("0x06", fp);
+					if(br1==7)
+						fputs("0x07", fp);
+					if(br1==8)
+						fputs("0x08", fp);
+					if(br1==9)
+						fputs("0x09", fp);
+					if(br1==10)
+						fputs("0x0A", fp);
+					if(br1==11)
+						fputs("0x0B", fp);
+					if(br1==12)
+						fputs("0x0C", fp);
+					if(br1==13)
+						fputs("0x0D", fp);
+					if(br1==14)
+						fputs("0x0E", fp);
+					if(br1==15)
+						fputs("0x0F", fp);
 						
 					if(fclose(fp))
 					{
