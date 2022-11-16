@@ -4,6 +4,8 @@
 int main () {
 
 
+
+
         FILE *fp;
         unsigned int br1, br2, res;
         unsigned int novo, staro = 0;
