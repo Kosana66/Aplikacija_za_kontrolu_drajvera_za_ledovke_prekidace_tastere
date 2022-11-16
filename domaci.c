@@ -2,8 +2,8 @@
 #include <stdlib.h> 
 #include <unistd.h>
 int main () {
-<<<<<<< HEAD
-=======
+
+
         FILE *fp;
         unsigned int br1, br2, res;
         unsigned int novo, staro = 0;
@@ -15,6 +15,7 @@ int main () {
         while(1)
 
                 {
+
 
                 //Citanje vrednosti tastera
                 fp = fopen ("/dev/button", "r");
@@ -37,6 +38,7 @@ int main () {
      		novo=0;
                 if(tval4)
                      novo=1;
+
 
                 if( novo!=0 && novo!=staro )
      		{
@@ -193,6 +195,3 @@ int main () {
         }
 }
 
-
-
->>>>>>> 9f4b94e761b5036c3ca1e732276b26912519bb7a
